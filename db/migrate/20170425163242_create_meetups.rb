@@ -10,5 +10,7 @@ class CreateMeetups < ActiveRecord::Migration
 
       table.timestamps null: false
     end
+    
+    add_index :meetups, :name, unique: true
   end
 end
