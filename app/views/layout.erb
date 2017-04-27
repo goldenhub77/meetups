@@ -4,8 +4,11 @@
     <title>Meetups</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/stylesheets/normalize.css" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Timmana" rel="stylesheet">
+    <link rel="stylesheet" href="/stylesheets/vendor/foundation.css" />
+    <link rel="stylesheet" href="/stylesheets/vendor/normalize.css" />
     <link rel="stylesheet" href="/stylesheets/app.css" />
+
   </head>
   <body>
 
@@ -15,6 +18,9 @@
 
         <ul class="top-bar-section">
           <% if current_user %>
+            <% if request.path_info === '/meetups' %>
+              <li><a id="new-meetup-link" href="/meetups/new">Create Meetup</a></li>
+            <% end %>
             <li>Signed in as <%= current_user.username %></a></li>
             <li><a href="/sign_out">Sign Out</a></li>
           <% else %>
@@ -35,6 +41,10 @@
     <div class="container">
       <%= yield %>
     </div>
+    <script src="/javascripts/vendor/foundation.js"></script>
+    <script>
+      $(document).foundation();
+    </script>
     <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
     <script src="/javascripts/app.js"></script>
   </body>

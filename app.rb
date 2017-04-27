@@ -11,6 +11,7 @@ helpers do
     end
     @current_user
   end
+
 end
 
 get '/' do
@@ -41,5 +42,10 @@ get 'meetups/show/:name' do
 end
 
 get '/meetups/new' do
-  
+  if current_user
+    erb :'meetups/new'
+  else
+    flash[:notice] = "Please sign in, no user logged in."
+    redirect '/'
+  end
 end
