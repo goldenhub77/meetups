@@ -17,7 +17,7 @@ Meetup.create(name: "video game lan party", location: "my house", creator: "gold
 Meetup.create(name: "sky diving group", location: "40,000 ft up over grand canyon", creator: "goldenhub77", description: "take a walk in the park and battle with friends", start_time: date, end_time: date.new_offset('+03:00'))
 
 
-UserMeetup.create(user_id: 2, meetup_id: 1)
-UserMeetup.create(user_id: 3, meetup_id: 1)
-UserMeetup.create(user_id: 2, meetup_id: 2)
-UserMeetup.create(user_id: 2, meetup_id: 3)
+MeetupMember.create(user_id: 2, meetup_id: 1)
+MeetupMember.create(user_id: 3, meetup_id: 1)
+MeetupMember.create(user_id: 2, meetup_id: 2)
+MeetupMember.create(user_id: 2, meetup_id: 3)

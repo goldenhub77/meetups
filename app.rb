@@ -12,6 +12,10 @@ helpers do
     @current_user
   end
 
+  def all_meetups
+    Meetup.all.sort { |a, b| a.name <=> b.name }
+  end
+
 end
 
 get '/' do
@@ -22,7 +26,6 @@ get '/auth/github/callback' do
   user = User.find_or_create_from_omniauth(env['omniauth.auth'])
   session[:user_id] = user.id
   flash[:notice] = "You're now signed in as #{user.username}!"
-
   redirect '/'
 end
 
@@ -37,7 +40,7 @@ get '/meetups' do
   erb :'meetups/index'
 end
 
-get 'meetups/show/:name' do
+get '/meetups/show/:name' do
 
 end
 

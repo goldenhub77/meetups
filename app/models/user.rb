@@ -1,8 +1,8 @@
 class User < ActiveRecord::Base
-  has_many :user_meetups
-  has_many :meetups, through: :user_meetups
+  has_many :meetup_members
+  has_many :meetups, through: :meetup_members
 
-  validates :provider, presence: true, uniqueness: true
+  validates :provider, presence: true
   validates :uid, presence: true, uniqueness: true
   validates :username, presence: true, uniqueness: true
   validates :email, presence: true, format: { with: /\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b/i }

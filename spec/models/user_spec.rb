@@ -42,4 +42,14 @@ describe User do
       end
     end
   end
+  describe ".create" do
+    context "provider, uid, username, email, avatar_url all require input. Username must be unique and email and avatar_url entries are validated" do
+      let(:user_fail) {User.create()}
+      let(:user_pass) {User.create(provider: "github", uid: "2", username: "jamjam77", email: "test123@hop.com", avatar_url: "https://test.com")}
+      it "should return object of errors as a string for user_fail and empty object for user_pass" do
+        expect(user_fail.errors.messages.to_s).to eq("{:provider=>[\"can't be blank\"], :uid=>[\"can't be blank\"], :username=>[\"can't be blank\"], :email=>[\"can't be blank\", \"is invalid\"], :avatar_url=>[\"can't be blank\", \"is invalid\"]}")
+        expect(user_pass.errors.messages.to_s).to eq("{}")
+      end
+    end
+  end
 end

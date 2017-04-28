@@ -12,6 +12,7 @@ feature "User signs in" do
   end
 
   scenario "successful sign in" do
+
     visit '/'
     sign_in_as user
 
