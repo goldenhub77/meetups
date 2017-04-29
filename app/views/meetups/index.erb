@@ -3,14 +3,14 @@
     <h1>Meetups</h1>
   </div>
 </div>
-<div class="row align-spaced">
-    <% all_meetups.each do |meetup| %>
-      <a href="/meetups/show/<%= meetup.name %>">
-        <div class="meetup-block column small-12 medium-4 large-4">
-          <h5><%= meetup.name %></h5>
-          <p><%= meetup.description %></p>
-          <p>Members Joined: <%= meetup.users.length %></p>
-        </div>
-      </a>
-    <% end %>
+<div class="row">
+  <% all_meetups.each do |meetup| %>
+    <div class="small-12 medium-6 large-4 columns">
+      <div class="meetup-block">
+        <h5><%= meetup.name %></h5>
+        <p><%= meetup.description %></p>
+        <p>Members Joined: <%= meetup.users.length %></p>
+      </div>
+    </div>
+  <% end %>
 </div>

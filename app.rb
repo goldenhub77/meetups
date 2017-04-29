@@ -41,6 +41,12 @@ get '/meetups' do
 end
 
 get '/meetups/show/:name' do
+  if current_user
+    erb :'meetups/new'
+  else
+    flash[:notice] = "Please sign in, no user logged in."
+    redirect '/'
+  end
 
 end
 
