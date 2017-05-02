@@ -27,7 +27,7 @@ $('document').ready(() => {
   meetupBlock.on('click', (event) => {
     event.preventDefault();
     let meetupHTML = $(event.delegateTarget.innerHTML);
-    let currentMeetup = meetupHTML[0].innerHTML;
+    let currentMeetup = meetupHTML[0].innerText;
 
     document.location.href = `/meetups/show/${currentMeetup}`;
   });

@@ -1,5 +1,6 @@
 require 'sinatra'
 require_relative 'config/application'
+require 'date'
 
 set :bind, '0.0.0.0'  # bind to all interfaces
 
@@ -42,7 +43,16 @@ end
 
 get '/meetups/show/:name' do
   if current_user
-    erb :'meetups/new'
+    @selected_meetup = params[:name]
+    @selected_meetup = Meetup.where("name = ?", "#{@selected_meetup}")
+    @selected_meetup = @selected_meetup[0]
+    if !@selected_meetup.start_time.nil?
+      @start_time = @selected_meetup.start_time.strftime("%m/%d/%y %I:%M%p")
+    end
+    if !@selected_meetup.end_time.nil?
+      @end_time = @selected_meetup.end_time.strftime("%m/%d/%y %I:%M%p")
+    end
+    erb :'meetups/show'
   else
     flash[:notice] = "Please sign in, no user logged in."
     redirect '/'
@@ -57,4 +67,9 @@ get '/meetups/new' do
     flash[:notice] = "Please sign in, no user logged in."
     redirect '/'
   end
+end
+
+post '/meetups/new' do
+  name = params[:name]
+  
 end

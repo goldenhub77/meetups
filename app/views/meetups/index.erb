@@ -7,9 +7,8 @@
   <% all_meetups.each do |meetup| %>
     <div class="small-12 medium-6 large-4 columns">
       <div class="meetup-block">
-        <h5><%= meetup.name %></h5>
-        <p><%= meetup.description %></p>
-        <p>Members Joined: <%= meetup.users.length %></p>
+        <a href="/meetups/show/<%= URI.encode(meetup.name) %>"><h5><%= meetup.name %></h5></a>
+        <p>Members: <%= meetup.users.length %></p>
       </div>
     </div>
   <% end %>

@@ -1,0 +1,15 @@
+<div class="row">
+  <div class="small-12 medium-12 large-12 columns">
+    <h1><%= @selected_meetup.name %></h1>
+  </div>
+</div>
+<div class="row">
+  <div class="small-12 medium-7 medium-centered large-7 large-centered columns meetup-details">
+      <p><%= @selected_meetup.description %></p>
+      <h5><%= @selected_meetup.location %></h5>
+      <h5>Begins: <%= @start_time %></h5>
+      <h5>Ends: <%= @end_time %></h5>
+      <h5>Started by: <%= @selected_meetup.creator %></h5>
+      <h4>Members Joined: <%= @selected_meetup.users.length %></h4>
+  </div>
+</div>

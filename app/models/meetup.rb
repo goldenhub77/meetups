@@ -9,4 +9,12 @@ class Meetup < ActiveRecord::Base
   validates :start_time, presence: true
   validates :end_time, presence: true
 
+  before_save :capitalize_name
+
+  def capitalize_name
+    capitalized_name = name.split(" ")
+    capitalized_name = capitalized_name.map { |part| part.capitalize }
+    capitalized_name = capitalized_name.join(" ")
+    self.name = capitalized_name
+  end
 end
