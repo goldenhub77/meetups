@@ -19,7 +19,7 @@
         <ul class="top-bar-section">
           <% if current_user %>
             <% if request.path_info === '/meetups' %>
-              <li><a id="new-meetup-link" href="/meetups/new">Create Meetup</a></li>
+              <li><a id="new-meetup-link" href="/meetup/create">Create Meetup</a></li>
             <% end %>
             <li>Signed in as <%= current_user.username %></a></li>
             <li><a href="/sign_out">Sign Out</a></li>

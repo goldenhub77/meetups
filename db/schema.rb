@@ -32,8 +32,6 @@ ActiveRecord::Schema.define(version: 20170425182255) do
     t.datetime "updated_at",  null: false
   end
 
-  add_index "meetups", ["name"], name: "index_meetups_on_name", unique: true, using: :btree
-
   create_table "users", force: :cascade do |t|
     t.string   "provider",   null: false
     t.string   "uid",        null: false

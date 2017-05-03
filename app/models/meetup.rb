@@ -2,7 +2,7 @@ class Meetup < ActiveRecord::Base
   has_many :meetup_members
   has_many :users, through: :meetup_members
 
-  validates :name, presence: true, uniqueness: true
+  validates :name, presence: true
   validates :location, presence: true
   validates :creator, presence: true
   validates :description, presence: true, length: { maximum: 400 }

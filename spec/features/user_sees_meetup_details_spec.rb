@@ -18,7 +18,6 @@ feature "User visits meetup details" do
   feature "user is signed out" do
     scenario "user clicks on meetup" do
       click_on("Helicopter Ride30")
-      # find(".meetup-block", text: "helicopter ride30").click
       expect(page).to have_content("Meetups in Space Sign In Please sign in, no user logged in.")
     end
   end
@@ -28,7 +27,6 @@ feature "User visits meetup details" do
     scenario "user clicks on meetup" do
       sign_in_as user
       click_on("Helicopter Ride30")
-      # find(".meetup-block", text: "helicopter ride30").click
       expect(page).to have_content("Meetups in Space Signed in as jarlax3 Sign Out Helicopter Ride30 take a ride above the city NYC Begins: 02/02/02 12:00PM Ends: 02/02/02 01:00PM Started by: john_smith88 Members Joined: 0")
     end
   end

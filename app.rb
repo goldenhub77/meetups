@@ -26,7 +26,11 @@ end
 get '/auth/github/callback' do
   user = User.find_or_create_from_omniauth(env['omniauth.auth'])
   session[:user_id] = user.id
-  flash[:notice] = "You're now signed in as #{user.username}!"
+  if user.username.nil?
+    flash[:notice] = "Login Error occurred!"
+  else
+    flash[:notice] = "You're now signed in as #{user.username}!"
+  end
   redirect '/'
 end
 
@@ -41,11 +45,10 @@ get '/meetups' do
   erb :'meetups/index'
 end
 
-get '/meetups/show/:name' do
+get '/meetups/:id' do
   if current_user
-    @selected_meetup = params[:name]
-    @selected_meetup = Meetup.where("name = ?", "#{@selected_meetup}")
-    @selected_meetup = @selected_meetup[0]
+    id = params[:id]
+    @selected_meetup = Meetup.find(id)
     if !@selected_meetup.start_time.nil?
       @start_time = @selected_meetup.start_time.strftime("%m/%d/%y %I:%M%p")
     end
@@ -60,7 +63,7 @@ get '/meetups/show/:name' do
 
 end
 
-get '/meetups/new' do
+get '/meetup/create' do
   if current_user
     erb :'meetups/new'
   else
@@ -69,7 +72,7 @@ get '/meetups/new' do
   end
 end
 
-post '/meetups/new' do
+post '/meetup/create' do
   name = params[:name]
-  
+
 end

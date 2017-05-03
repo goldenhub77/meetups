@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Meetup do
   describe ".create" do
-    context "name, location, creator, description, start_time, end_time all require input. Name must be unique and description max length of 400" do
+    context "name, location, creator, description, start_time, end_time all require input. Description max length of 400" do
       let(:meetup_fail) { Meetup.create() }
       let(:meetup_pass) { Meetup.create(name: "walk in the park", location: "NYC", creator: "jamjam77", description: "late stroll in the park with a group for exercise", start_time: "01-01-01 0:00:00", end_time: "01-01-01 02:00:00") }
 
