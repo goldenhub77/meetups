@@ -25,5 +25,22 @@ describe Meetup do
         end
       end
     end
+
+    describe ".validate_start_and_end_dates" do
+      context "before saving to database end_time should be greater than start_time" do
+        let!(:meetup_fail_1) { Meetup.new(name: "lan party extravaganza", location: "NYC", creator: "jamjam77", description: "late stroll in the park with a group for exercise", start_time: "01-02-01 0:00:00", end_time: "01-01-01 02:00:00") }
+        let!(:meetup_fail_2) { Meetup.new(name: "Club night in the big City", location: "NYC", creator: "jamjam77", description: "late stroll in the park with a group for exercise", start_time: "01-02-01 1:00:00", end_time: "01-01-01 02:00:00") }
+        let!(:meetup_fail_3) { Meetup.new(name: "Glide Through The Tropics", location: "NYC", creator: "jamjam77", description: "late stroll in the park with a group for exercise", start_time: "01-01-01 1:00:00", end_time: "01-01-01 00:00:00") }
+
+        it "should return error if end_time is less than start_time" do
+          meetup_fail_1.save
+          meetup_fail_2.save
+          meetup_fail_3.save
+          expect(meetup_fail_1.valid?).to eq(false)
+          expect(meetup_fail_2.valid?).to eq(false)
+          expect(meetup_fail_3.valid?).to eq(false)
+        end
+      end
+    end
   end
 end

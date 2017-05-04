@@ -1,33 +1,61 @@
 <h1>Start a new Meetup</h1>
-<form action="/meetup/create" method="POST">
+
+<form data-abide novalidate action="/meetup/create" method="POST">
+  <div data-abide-error class="alert callout" style="display: none;">
+    <p><i class="fi-alert"></i> There are errors on the form!</p>
+  </div>
   <div class="row">
-    <div class="small-6 medium-6 large-6 columns">
-      <label>Name your meetup
-        <input type="text" placeholder="your meetup name">
+    <div class="small-12 columns">
+      <label>Name
+        <input type="text" name="name" aria-describedby="exampleHelpText" required>
+        <span class="form-error">
+          Name is required!
+        </span>
       </label>
     </div>
-    <div class="small-6 medium-6 large-6 columns">
-      <label>Where is it located?
-        <input type="text" placeholder="location">
+    <div class="small-12 columns">
+      <label>Location
+        <input type="text" name="location" aria-describedby="exampleHelpText" required >
+        <span class="form-error">
+          Location is required!
+        </span>
       </label>
     </div>
-    <div class="small-6 medium-6 large-6 columns">
-      <label>When will it start?
-        <input type="text" placeholder="date and time">
+    <div class="small-3 columns">
+      <p id="date-time-form">
+        <label>Starts at?
+          <input type="text" class="date start" name="start_date" placeholder="Start Date" required/>
+        </label>
+        <input type="text" class="time start" name="start_time" placeholder="Start Time" required/>
+        <span class="form-error">
+          Start Date/Time
+        </span>
+        <label>Ends at?
+          <input type="text" class="date end" name="end_date" placeholder="End Date" required/>
+        </label>
+        <input type="text" class="time end" name="end_time" placeholder="End Time" required/>
+        <span class="form-error">
+          End Date/Time is required!
+        </span>
+      </p>
+    </div>
+  <div class="row">
+    <div class="small-8 columns">
+      <label>Description
+        <textarea id="meetupDesc" name="description" maxlength="400" cols="30" rows="5" required></textarea>
+        <p id="charNum"></p>
+        <span class="form-error">
+          Description is required!
+        </span>
       </label>
     </div>
-    <div class="small-6 medium-6 large-6 columns">
-      <label>When will it end?
-        <input type="text" placeholder="date and time">
-      </label>
-    </div>
-    <div class="small-12 medium-12 large-12 columns">
-      <label>What will you be doing?
-        <input type="text" placeholder="description">
-      </label>
-    </div>
-    <div>
-        <input class="button" type="submit" value="Create Meetup">
-    </div>
+  </div>
+  <div class="row">
+    <fieldset class="small-2 small-offset-4 columns">
+      <button class="button" type="submit" value="Submit">Submit</button>
+    </fieldset>
+    <fieldset class="small-1 columns end">
+      <button class="button" type="reset" value="Reset">Reset</button>
+    </fieldset>
   </div>
 </form>

@@ -1,21 +1,42 @@
-
 body {
   background-image: url('/images/stardust.png');
   font-family: 'Open Sans Condensed', sans-serif;
-  font-size: 2em;
-  color: #FFFFFF;
+  font-size: 15px;
+}
+h1, h5, h4, p, span, a, a:visited,
+.meetup-link:hover,
+.meetup-block a,
+.meetup-block a:visited,
+.meetup-block a:hover,
+.top-bar-section,
+label {
+  color: #FFF;
 }
 
 h1 {
+  position: relative;
   margin-top: 1em;
   font-family: 'Timmana', sans-serif;
   text-align: center;
 }
 
 a, a:visited {
-  color: #FFFFFF;
+
   line-height: 0;
   text-decoration: none;
+}
+
+p{
+  font-size: 1.5rem;
+}
+
+button.button {
+  background: #86858b;
+  border-radius: 5px;
+}
+
+button.button:hover, button.button:clicked {
+  background: #000;
 }
 
 .meetup-link {
@@ -38,7 +59,6 @@ a, a:visited {
   -moz-opacity: 0.6;
   opacity: 0.6;
   text-decoration: none;
-  color: inherit;
 }
 
 .meetup-link p {
@@ -55,7 +75,14 @@ div.meetup-block a,
 div.meetup-block a:visited,
 div.meetup-block a:hover {
   text-decoration: none;
-  color: inherit;
+}
+
+div.columns {
+  position: relative;
+}
+
+div.columns p label {
+  line-height: 3.5rem;
 }
 
 #new-meetup-link {
@@ -75,6 +102,7 @@ div.meetup-block a:hover {
 }
 
 .top-bar {
+  font-size: 1.5rem;
   height: auto;
   background-color: #3C3C3C;
 }
@@ -104,6 +132,7 @@ div.meetup-block a:hover {
   overflow: hidden;
   width: 100%;
   height: 50px;
+  font-size: 1.75rem;
   text-align: center;
   position: absolute;
   top: inherit;
@@ -111,6 +140,56 @@ div.meetup-block a:hover {
 }
 
 label {
-  font-size: 1em;
-  color: #FFF;
+  font-size: 1.5rem;
+}
+
+span.form-error {
+  margin-top: -1.3rem;
+  position: absolute;
+  font-size: 1rem;
+}
+
+#date-time-form span{
+  margin: -0.5rem 0rem;
+}
+
+label {
+  display: inline;
+}
+
+input, textarea {
+  border-radius: 5px !important;
+}
+
+#date-time-form input{
+  margin: 0.2rem -0.5px;
+  width: auto;
+}
+
+table.table-condensed {
+  position: relative;
+  width: auto;
+  line-height: 0;
+  border: 2px solid #FFF;
+  border-radius: 10px;
+  background: #FFF;
+
+}
+
+div.datepicker {
+  position: absolute;
+}
+
+.alert p {
+  color: red;
+}
+#meetupDesc {
+  font-size: 1.5rem;
+}
+
+#charNum {
+  text-align: right;
+  line-height: 0;
+  text-transform: uppercase;
+  font-weight: bold;
 }

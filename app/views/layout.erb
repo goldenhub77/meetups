@@ -5,10 +5,18 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Timmana" rel="stylesheet">
-    <link rel="stylesheet" href="/stylesheets/vendor/foundation.css" />
-    <!-- <link rel="stylesheet" href="/stylesheets/vendor/normalize.css" /> -->
-    <link rel="stylesheet" href="/stylesheets/app.css" />
-
+    <link href="//cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css" rel="stylesheet">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.0.2/css/font-awesome.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/vendor/foundation.css" />
+    <link rel="stylesheet" type="text/css" href="/stylesheets/app.css" />
+    <link rel="stylesheet" type="text/css" href="/stylesheets/vendor/jquery.timepicker.css" />
+    <link rel="stylesheet" type="text/css" href="/stylesheets/vendor/bootstrap-datepicker.css" />
+    <script type="text/javascript" src="/javascripts/vendor/jquery.js"></script>
+    <script type="text/javascript" src="/javascripts/vendor/foundation.js"></script>
+    <script type="text/javascript" src="/javascripts/vendor/bootstrap-datepicker.js"></script>
+    <script type="text/javascript" src="/javascripts/vendor/jquery.timepicker.min.js"></script>
+    <script type="text/javascript" src="/javascripts/vendor/datepair.min.js"></script>
+    <script type="text/javascript" src="/javascripts/vendor/jquery.datepair.min.js"></script>
   </head>
   <body>
 
@@ -41,11 +49,6 @@
     <div class="container">
       <%= yield %>
     </div>
-    <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
-    <script src="/javascripts/vendor/foundation.js"></script>
-    <script>
-      $(document).foundation();
-    </script>
     <script src="/javascripts/app.js"></script>
   </body>
 </html>
