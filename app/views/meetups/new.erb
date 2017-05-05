@@ -25,17 +25,25 @@
       <p id="date-time-form">
         <label>Starts at?
           <input type="text" class="date start" name="start_date" placeholder="Start Date" required/>
+          <span class="form-error">
+            Start Date required!
+          </span>
         </label>
-        <input type="text" class="time start" name="start_time" placeholder="Start Time" required/>
-        <span class="form-error">
-          Start Date/Time
-        </span>
+        <label>
+          <span class="form-error">
+            Start Time required!
+          </span>
+          <input type="text" class="time start" name="start_time" placeholder="Start Time" required/>
+        </label>
         <label>Ends at?
           <input type="text" class="date end" name="end_date" placeholder="End Date" required/>
+          <span class="form-error">
+            End Date required!
+          </span>
         </label>
         <input type="text" class="time end" name="end_time" placeholder="End Time" required/>
         <span class="form-error">
-          End Date/Time is required!
+          End Time required!
         </span>
       </p>
     </div>

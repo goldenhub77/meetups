@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
   validates :provider, presence: true
   validates :uid, presence: true, uniqueness: true
   validates :username, presence: true, uniqueness: true
+  validates :name, presence: true
   validates :email, presence: true, format: { with: /\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b/i }
   validates :avatar_url, presence: true, format: { with: /([a-zA-Z]+):\/\/(-\.)?(([^\s\/?\.#\-]+|([^\s\/?\.#\-]-[^\s\/?\.#\-]))\.?)+(\/[^\s]*)?/i }
 
@@ -16,9 +17,9 @@ class User < ActiveRecord::Base
       user.provider = provider
       user.uid = uid
       user.email = auth.info.email
-      user.username = auth.info.name
+      user.username = auth.info.nickname
+      user.name = auth.info.name
       user.avatar_url = auth.info.image
-
     end
   end
 end

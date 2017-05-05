@@ -6,9 +6,9 @@
 #   Person.create(first_name: 'Eric', last_name: 'Kelly')
 require 'Date'
 
-User.create(provider: "testprovider", uid: 22, username: "goldenhub77", email: "test@ao.com", avatar_url: "https://url.com")
-User.create(provider: "testprovider2", uid: 255, username: "hellocode2", email: "test@ao.com", avatar_url: "https://url.com")
-User.create(provider: "testprovider3", uid: 123, username: "mynameis123", email: "test@ao.com", avatar_url: "https://url.com")
+User.create(provider: "testprovider", uid: 22, username: "goldenhub99", name: "Sean", email: "test@ao.com", avatar_url: "https://url.com")
+User.create(provider: "testprovider2", uid: 255, username: "hellocode2", name: "Tim", email: "test@ao.com", avatar_url: "https://url.com")
+User.create(provider: "testprovider3", uid: 123, username: "mynameis123", name: "John", email: "test@ao.com", avatar_url: "https://url.com")
 
 date = DateTime.now
 

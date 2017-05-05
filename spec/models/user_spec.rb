@@ -8,6 +8,7 @@ describe User do
           provider: "github",
           uid: "1",
           username: "jarlax1",
+          name: "Sean",
           email: "jarlax1@launchacademy.com",
           avatar_url: "https://avatars2.githubusercontent.com/u/174825?v=3&s=400"
         )
@@ -29,6 +30,7 @@ describe User do
           provider: "github",
           uid: "1",
           username: "jarlax1",
+          name: "Sean",
           email: "jarlax1@launchacademy.com",
           avatar_url: "https://avatars2.githubusercontent.com/u/174825?v=3&s=400"
         )
@@ -45,9 +47,9 @@ describe User do
   describe ".create" do
     context "provider, uid, username, email, avatar_url all require input. Username must be unique and email and avatar_url entries are validated" do
       let(:user_fail) {User.create()}
-      let(:user_pass) {User.create(provider: "github", uid: "2", username: "jamjam77", email: "test123@hop.com", avatar_url: "https://test.com")}
+      let(:user_pass) {User.create(provider: "github", uid: "2", username: "jamjam77", name: "Sean", email: "test123@hop.com", avatar_url: "https://test.com")}
       it "should return object of errors as a string for user_fail and empty object for user_pass" do
-        expect(user_fail.errors.messages.to_s).to eq("{:provider=>[\"can't be blank\"], :uid=>[\"can't be blank\"], :username=>[\"can't be blank\"], :email=>[\"can't be blank\", \"is invalid\"], :avatar_url=>[\"can't be blank\", \"is invalid\"]}")
+        expect(user_fail.errors.messages.to_s).to eq("{:provider=>[\"can't be blank\"], :uid=>[\"can't be blank\"], :username=>[\"can't be blank\"], :name=>[\"can't be blank\"], :email=>[\"can't be blank\", \"is invalid\"], :avatar_url=>[\"can't be blank\", \"is invalid\"]}")
         expect(user_pass.errors.messages.to_s).to eq("{}")
       end
     end

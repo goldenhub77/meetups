@@ -8,9 +8,10 @@
     <link href="//cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css" rel="stylesheet">
     <link href="//netdna.bootstrapcdn.com/font-awesome/3.0.2/css/font-awesome.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="/stylesheets/vendor/foundation.css" />
-    <link rel="stylesheet" type="text/css" href="/stylesheets/app.css" />
+
     <link rel="stylesheet" type="text/css" href="/stylesheets/vendor/jquery.timepicker.css" />
     <link rel="stylesheet" type="text/css" href="/stylesheets/vendor/bootstrap-datepicker.css" />
+    <link rel="stylesheet" type="text/css" href="/stylesheets/app.css" />
     <script type="text/javascript" src="/javascripts/vendor/jquery.js"></script>
     <script type="text/javascript" src="/javascripts/vendor/foundation.js"></script>
     <script type="text/javascript" src="/javascripts/vendor/bootstrap-datepicker.js"></script>
@@ -29,7 +30,7 @@
             <% if request.path_info === '/meetups' %>
               <li><a id="new-meetup-link" href="/meetup/create">Create Meetup</a></li>
             <% end %>
-            <li>Signed in as <%= current_user.username %></a></li>
+            <li>Signed in as <%= current_user.name %></a></li>
             <li><a href="/sign_out">Sign Out</a></li>
           <% else %>
             <li><a href="/auth/github">Sign In</a></li>

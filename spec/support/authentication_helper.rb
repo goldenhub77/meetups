@@ -10,9 +10,9 @@ module AuthenticationHelper
       "provider" => user.provider,
       "uid" => user.uid,
       "info" => {
-        "nickname" => "",
+        "nickname" => user.username,
         "email" => user.email,
-        "name" => user.username,
+        "name" => user.name,
         "image" => user.avatar_url,
         "urls" => {
           "GitHub" => "",
@@ -42,7 +42,7 @@ module AuthenticationHelper
           "received_events_url" => "",
           "type" => "User",
           "site_admin" => false,
-          "name" => user.username,
+          "name" => user.name,
           "company" => nil,
           "blog" => nil,
           "location" => "",

@@ -6,6 +6,7 @@ feature "User signs in" do
       provider: "github",
       uid: "1",
       username: "jarlax1",
+      name: "Sean",
       email: "jarlax1@launchacademy.com",
       avatar_url: "https://avatars2.githubusercontent.com/u/174825?v=3&s=400"
     )
@@ -16,7 +17,7 @@ feature "User signs in" do
     visit '/'
     sign_in_as user
 
-    expect(page).to have_content "You're now signed in as #{user.username}!"
+    expect(page).to have_content "You're now signed in as #{user.name}!"
   end
 
   scenario "successful sign out" do

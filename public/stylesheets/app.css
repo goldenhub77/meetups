@@ -9,7 +9,8 @@ h1, h5, h4, p, span, a, a:visited,
 .meetup-block a:visited,
 .meetup-block a:hover,
 .top-bar-section,
-label {
+label,
+.flash {
   color: #FFF;
 }
 
@@ -30,12 +31,13 @@ p{
   font-size: 1.5rem;
 }
 
-button.button {
+button.button, button.button:focus {
   background: #86858b;
+  outline: none;
   border-radius: 5px;
 }
 
-button.button:hover, button.button:clicked {
+button.button:hover {
   background: #000;
 }
 
@@ -82,7 +84,7 @@ div.columns {
 }
 
 div.columns p label {
-  line-height: 3.5rem;
+  line-height: 6.5rem;
 }
 
 #new-meetup-link {
@@ -150,7 +152,11 @@ span.form-error {
 }
 
 #date-time-form span{
-  margin: -0.5rem 0rem;
+  margin-top: -0.3rem;
+}
+
+#date-time-form span:nth-child(odd){
+  margin-top: 0.7rem;
 }
 
 label {

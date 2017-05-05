@@ -1,6 +1,3 @@
-let today = new Date();
-let tomorrow = new Date();
-new Date(tomorrow.setDate(today.getDate() + 1));
 
 $('#date-time-form .time').timepicker({
         'showDuration': true,
@@ -15,19 +12,23 @@ $('#date-time-form .date').datepicker({
     });
 //initializes date/time fields to todays date and time
 
-$('#date-time-form .date:first').datepicker('setDate', today);
-$('#date-time-form .time').timepicker('setTime', today);
-$('#date-time-form .date:last').datepicker('setDate', tomorrow);
+// let today = new Date();
+// let tomorrow = new Date();
+// new Date(tomorrow.setDate(today.getDate() + 1));
+//
+// $('#date-time-form .date:first').datepicker('setDate', today);
+// $('#date-time-form .time').timepicker('setTime', today);
+// $('#date-time-form .date:last').datepicker('setDate', tomorrow);
 
 // initialize datepair
-$('#date-time-form').datepair();
+$('#date-time-form').datepair({
+});
 
 $(document).foundation();
 
 $('document').ready(() => {
 
-
-  $('#meetupDesc').on('focus keydown keyup', function (event) {
+  $('#meetupDesc').on('focus keydown keyup', (event) => {
     let max = 400;
     let len = $(this).val().length;
     let char = max - len;
@@ -40,14 +41,16 @@ $('document').ready(() => {
       }
     });
 
-  $('#meetupDesc').on('blur', function () {
+  $('#meetupDesc').on('blur', () => {
     $('#charNum').hide();
   });
 
   let signOut = $(".top-bar-section li a[href='/sign_out']");
   let signIn = $(".top-bar-section li a[href='/auth/github']");
   let flash = $(".flash");
-
+  // flash.click(() => {
+  //   flash.fadeOut();
+  // });
   if (signIn.length === 1) {
     if (flash.length === 1) {
       flash.delay(2000).fadeOut();

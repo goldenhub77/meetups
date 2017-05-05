@@ -4,6 +4,8 @@ require 'date'
 
 set :bind, '0.0.0.0'  # bind to all interfaces
 
+enable :sessions;
+
 helpers do
   def current_user
     if @current_user.nil? && session[:user_id]
@@ -13,7 +15,7 @@ helpers do
     @current_user
   end
 
-  def all_meetups
+  def all_sorted_meetups
     Meetup.all.sort { |a, b| a.name <=> b.name }
   end
 
@@ -24,12 +26,13 @@ get '/' do
 end
 
 get '/auth/github/callback' do
+
   user = User.find_or_create_from_omniauth(env['omniauth.auth'])
   session[:user_id] = user.id
-  if user.username.nil?
-    flash[:notice] = "Login Error occurred!"
+  if user.valid?
+    flash[:notice] = "You're now signed in as #{user.name}!"
   else
-    flash[:notice] = "You're now signed in as #{user.username}!"
+    flash[:notice] = "Login Error occurred!"
   end
   redirect '/'
 end
@@ -73,6 +76,8 @@ get '/meetup/create' do
 end
 
 post '/meetup/create' do
+  #will be used to turn form data into a DateTime object
+  # DateTime.strptime('3/2/2001 4:05pm', '%d/%m/%Y %I:%M %p')
   name = params[:name]
 
 end
