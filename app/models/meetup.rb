@@ -6,8 +6,8 @@ class Meetup < ActiveRecord::Base
   validates :location, presence: true
   validates :creator, presence: true
   validates :description, presence: true, length: { maximum: 400 }
-  validates :start_time, presence: true
-  validates :end_time, presence: true
+  validates :start_date, presence: true
+  validates :end_date, presence: true
   validate :validate_start_and_end_dates
 
   before_save :capitalize_name
@@ -20,8 +20,8 @@ class Meetup < ActiveRecord::Base
   end
 
   def validate_start_and_end_dates
-    if end_time && start_time
-      errors.add(:end_time, "End time must be greater than start time") if end_time < start_time
+    if end_date && start_date
+      errors.add(:end_date, "must be greater than start date") if end_date < start_date
     end
   end
 end

@@ -12,9 +12,9 @@ User.create(provider: "testprovider3", uid: 123, username: "mynameis123", name: 
 
 date = DateTime.now
 
-Meetup.create(name: "MMO in the park", location: "central park, NYC", creator: "goldenhub77", description: "take a walk in the park and battle with friends", start_time: date, end_time: date.new_offset('+03:00'))
-Meetup.create(name: "video game lan party", location: "my house", creator: "goldenhub77", description: "take a walk in the park and battle with friends", start_time: date, end_time: date.new_offset('+03:00'))
-Meetup.create(name: "sky diving group", location: "40,000 ft up over grand canyon", creator: "goldenhub77", description: "take a walk in the park and battle with friends", start_time: date, end_time: date.new_offset('+03:00'))
+Meetup.create(name: "MMO in the park", location: "central park, NYC", creator: "goldenhub77", description: "take a walk in the park and battle with friends", start_date: date, end_date: date.new_offset('+03:00'))
+Meetup.create(name: "video game lan party", location: "my house", creator: "goldenhub77", description: "take a walk in the park and battle with friends", start_date: date, end_date: date.new_offset('+03:00'))
+Meetup.create(name: "sky diving group", location: "40,000 ft up over grand canyon", creator: "goldenhub77", description: "take a walk in the park and battle with friends", start_date: date, end_date: date.new_offset('+03:00'))
 
 
 MeetupMember.create(user_id: 2, meetup_id: 1)

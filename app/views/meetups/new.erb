@@ -1,13 +1,13 @@
 <h1>Start a new Meetup</h1>
 
-<form data-abide novalidate action="/meetup/create" method="POST">
-  <div data-abide-error class="alert callout" style="display: none;">
+<form action="/meetup/create" method="POST">
+  <!-- <div data-abide-error class="alert callout" style="display: none;">
     <p><i class="fi-alert"></i> There are errors on the form!</p>
-  </div>
+  </div> -->
   <div class="row">
     <div class="small-12 columns">
       <label>Name
-        <input type="text" name="name" aria-describedby="exampleHelpText" required>
+        <input type="text" name="name" value="<%= session[:name] %>" aria-describedby="exampleHelpText" required>
         <span class="form-error">
           Name is required!
         </span>
@@ -15,7 +15,7 @@
     </div>
     <div class="small-12 columns">
       <label>Location
-        <input type="text" name="location" aria-describedby="exampleHelpText" required >
+        <input type="text" name="location" value="<%= session[:location] %>" aria-describedby="exampleHelpText" required >
         <span class="form-error">
           Location is required!
         </span>
@@ -24,24 +24,24 @@
     <div class="small-3 columns">
       <p id="date-time-form">
         <label>Starts at?
-          <input type="text" class="date start" name="start_date" placeholder="Start Date" required/>
+          <input type="date" class="date start" value="<%= session[:start_date] %>" min="<%= @start_min_date %>" name="start_date" placeholder="Start Date" required/>
           <span class="form-error">
             Start Date required!
           </span>
         </label>
         <label>
+          <input type="time" class="time start" value="<%= session[:start_time] %>" name="start_time" placeholder="Start Time" required/>
           <span class="form-error">
             Start Time required!
           </span>
-          <input type="text" class="time start" name="start_time" placeholder="Start Time" required/>
         </label>
         <label>Ends at?
-          <input type="text" class="date end" name="end_date" placeholder="End Date" required/>
+          <input type="date" class="date end" value="<%= session[:end_date] %>" min="<%= @start_min_date %>" name="end_date" placeholder="End Date" required/>
           <span class="form-error">
             End Date required!
           </span>
         </label>
-        <input type="text" class="time end" name="end_time" placeholder="End Time" required/>
+        <input type="time" class="time end" value="<%= session[:end_time] %>" name="end_time" placeholder="End Time" required/>
         <span class="form-error">
           End Time required!
         </span>
@@ -50,16 +50,14 @@
   <div class="row">
     <div class="small-8 columns">
       <label>Description
-        <textarea id="meetupDesc" name="description" maxlength="400" cols="30" rows="5" required></textarea>
+        <textarea id="meetupDesc" name="description" maxlength="400" rows="7" required><%= session[:description] %></textarea>
         <p id="charNum"></p>
         <span class="form-error">
           Description is required!
         </span>
       </label>
     </div>
-  </div>
-  <div class="row">
-    <fieldset class="small-2 small-offset-4 columns">
+    <fieldset class="small-2 small-offset-2 columns">
       <button class="button" type="submit" value="Submit">Submit</button>
     </fieldset>
     <fieldset class="small-1 columns end">

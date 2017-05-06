@@ -1,4 +1,6 @@
+let today = new Date();
 
+$('#date-time-form input').attr('type', 'text');
 $('#date-time-form .time').timepicker({
         'showDuration': true,
         'timeFormat': 'g:ia',
@@ -6,13 +8,12 @@ $('#date-time-form .time').timepicker({
     });
 
 $('#date-time-form .date').datepicker({
-        'format': 'm/d/yyyy',
+        'format': 'yyyy-m-d',
         'autoclose': true,
+        'startDate': today,
         'disableTextInput': true
     });
-//initializes date/time fields to todays date and time
-
-// let today = new Date();
+// initializes date/time fields to todays date and time
 // let tomorrow = new Date();
 // new Date(tomorrow.setDate(today.getDate() + 1));
 //
@@ -30,38 +31,36 @@ $('document').ready(() => {
 
   $('#meetupDesc').on('focus keydown keyup', (event) => {
     let max = 400;
-    let len = $(this).val().length;
+    let len = $('#meetupDesc').val().length;
     let char = max - len;
-    $('#charNum').show();
-    $('#charNum').text(char + ' characters left');
+    $('#charNum').css('visibility', 'visible');
+    $('#charNum').text(char);
       if (event.keyCode === 8) {
 
-      }else if (char <= 0) {
+      }else if (char <= 0 || event.keyCode === 13) {
         event.preventDefault();
       }
     });
 
   $('#meetupDesc').on('blur', () => {
-    $('#charNum').hide();
+    $('#charNum').css('visibility', 'hidden');
   });
 
   let signOut = $(".top-bar-section li a[href='/sign_out']");
   let signIn = $(".top-bar-section li a[href='/auth/github']");
   let flash = $(".flash");
-  // flash.click(() => {
-  //   flash.fadeOut();
-  // });
+
   if (signIn.length === 1) {
     if (flash.length === 1) {
       flash.delay(2000).fadeOut();
     }
   }else if (signOut.length === 1) {
     if (flash.length === 1) {
-      flash.delay(2000).fadeOut();
+      flash.delay(3000).fadeOut();
       signOut.click((event) => {
         event.preventDefault();
 
-        flash.delay(2000).fadeOut(() => {
+        flash.delay(3000).fadeOut(() => {
 
           document.location.href = '/sign_out';
         });

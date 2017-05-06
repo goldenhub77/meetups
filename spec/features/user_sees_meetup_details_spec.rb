@@ -8,8 +8,8 @@ feature "User visits meetup details" do
     location: "NYC",
     creator: "john_smith88",
     description: "take a ride above the city",
-    start_time: "02-02-02 12:00",
-    end_time: "02-02-02 13:00") }
+    start_date: "02-02-02 12:00",
+    end_date: "02-02-02 13:00") }
 
   before(:each) do
     visit '/meetups'
@@ -24,6 +24,6 @@ feature "User visits meetup details" do
   scenario "User logged in clicks on a meetup" do
     sign_in_as user
     click_on("Helicopter Ride30")
-    expect(page).to have_content("Sign Out Helicopter Ride30 take a ride above the city NYC Begins: 02/02/02 12:00PM Ends: 02/02/02 01:00PM Started by: john_smith88 Members Joined: 0")
+    expect(page).to have_content("Sign Out Helicopter Ride30 take a ride above the city NYC Begins: Sat Feb 2, 2002 at 12:00PM Ends: Sat Feb 2, 2002 at 1:00PM Started by: john_smith88 Members Joined: 0")
   end
 end

@@ -15,7 +15,7 @@ FactoryGirl.define do
     location "NYC"
     creator "john_smith88"
     description "take a ride above the city"
-    start_time "02-02-02 12:00"
-    end_time "02-02-02 13:00"
+    start_date "02-02-02 12:00"
+    end_date "02-02-02 13:00"
   end
 end

@@ -27,8 +27,9 @@ a, a:visited {
   text-decoration: none;
 }
 
-p{
-  font-size: 1.5rem;
+p {
+  margin: 0;
+  font-size: 1.25rem;
 }
 
 button.button, button.button:focus {
@@ -81,10 +82,6 @@ div.meetup-block a:hover {
 
 div.columns {
   position: relative;
-}
-
-div.columns p label {
-  line-height: 6.5rem;
 }
 
 #new-meetup-link {
@@ -142,29 +139,22 @@ div.columns p label {
 }
 
 label {
+  display: inline;
   font-size: 1.5rem;
 }
 
 span.form-error {
-  margin-top: -1.3rem;
-  position: absolute;
+  margin: 0;
   font-size: 1rem;
 }
 
-#date-time-form span{
-  margin-top: -0.3rem;
-}
-
-#date-time-form span:nth-child(odd){
-  margin-top: 0.7rem;
-}
-
-label {
-  display: inline;
-}
-
 input, textarea {
+  margin-bottom: 0;
   border-radius: 5px !important;
+}
+
+input[type='text'], textarea[type='text'] {
+  margin-bottom: 0;
 }
 
 #date-time-form input{
@@ -194,8 +184,16 @@ div.datepicker {
 }
 
 #charNum {
+  position: relative;
+  z-index: 1;
+  margin: -0.9rem 0.3rem 1rem 0;
   text-align: right;
+  color: #000;
   line-height: 0;
   text-transform: uppercase;
   font-weight: bold;
+}
+
+fieldset {
+  margin: 1rem;
 }

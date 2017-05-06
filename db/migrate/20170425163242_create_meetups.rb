@@ -5,8 +5,8 @@ class CreateMeetups < ActiveRecord::Migration
       table.string :location, null: false
       table.string :creator, null: false
       table.text :description, null: false
-      table.datetime :start_time, null: false
-      table.datetime :end_time, null: false
+      table.datetime :start_date, null: false
+      table.datetime :end_date, null: false
 
       table.timestamps null: false
     end
