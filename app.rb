@@ -56,7 +56,6 @@ get '/meetups' do
 end
 
 get '/meetups/:id' do
-  if current_user
     id = params[:id]
     @selected_meetup = Meetup.find(id)
     if !@selected_meetup.start_date.nil?
@@ -72,10 +71,7 @@ get '/meetups/:id' do
     else
       erb :'meetups/show'
     end
-  else
-    flash[:notice] = "Please sign in, no user logged in."
-    redirect '/'
-  end
+
 
 end
 
@@ -98,16 +94,23 @@ post '/meetup/create' do
   session[:name] = params[:name]
   session[:location] = params[:location]
   session[:start_date] = params[:start_date]
-  session[:start_time] = params[:start_time]
   session[:end_date] = params[:end_date]
+  session[:start_time] = params[:start_time]
   session[:end_time] = params[:end_time]
   session[:description] = params[:description]
 
   if session[:start_date] != "" && session[:start_time] != ""
-    session[:db_start_date] = DateTime.strptime("#{session[:start_date]} #{session[:start_time]}", '%Y-%m-%d %H:%M')
+    begin
+      session[:db_start_date] = DateTime.strptime("#{session[:start_date]} #{session[:start_time]}", '%m/%d/%Y %l:%M%p')
+    rescue
+    end
   end
+
   if session[:end_date] != "" && session[:end_time] != ""
-    session[:db_end_date] = DateTime.strptime("#{session[:end_date]} #{session[:end_time]}", '%Y-%m-%d %H:%M')
+    begin
+      session[:db_end_date] = DateTime.strptime("#{session[:end_date]} #{session[:end_time]}", '%m/%d/%Y %l:%M%p')
+    rescue
+    end
   end
 
   meetup = Meetup.create({
@@ -125,11 +128,29 @@ post '/meetup/create' do
     redirect "/meetups/#{meetup.id}"
   else
     session[:create_meetup] = false
-    errors = "Meetup not saved - "
-    meetup.errors.full_messages().each do |error|
-      errors += error
-    end
-    flash[:notice] = errors
+    title = "Meetup not saved - "
+    messages = meetup.errors.full_messages.join(", ")
+    flash[:notice] = title + messages
     redirect '/meetup/create'
   end
+end
+
+post '/meetup/join' do
+  meetup_id = params[:meetup_id].to_i
+  meetup = Meetup.find(meetup_id)
+  if current_user
+    if meetup.users.where('uid = ?', current_user.uid).empty?
+      membership = MeetupMember.create(user_id: current_user.id, meetup_id: meetup.id)
+      if membership.valid?
+        flash[:notice] = "Joined meetup successfully!"
+      else
+        flash[:notice] = "Unable to join meetup!"
+      end
+    else
+      flash[:notice] = "You are already joined this meetup!"
+    end
+  else
+    flash[:notice] = "Please sign in, no user logged in."
+  end
+  redirect "/meetups/#{meetup_id}"
 end

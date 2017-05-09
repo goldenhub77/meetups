@@ -5,11 +5,32 @@
 </div>
 <div class="row">
   <div class="small-12 medium-7 medium-centered large-7 large-centered columns meetup-details">
-      <p><%= @selected_meetup.description %></p>
-      <h5><%= @selected_meetup.location %></h5>
-      <h5>Begins: <%= @start_date %></h5>
-      <h5>Ends: <%= @end_date %></h5>
-      <h5>Started by: <%= @selected_meetup.creator %></h5>
-      <h4>Members Joined: <%= @selected_meetup.users.length %></h4>
+    <p><%= @selected_meetup.description %></p>
+    <h5><%= @selected_meetup.location %></h5>
+    <h5>Begins: <%= @start_date %></h5>
+    <h5>Ends: <%= @end_date %></h5>
+    <h5>Started by: <%= @selected_meetup.creator %></h5>
+  </div>
+</div>
+<div class="row">
+  <div class="small-3 columns">
+    <form action="/meetup/join" method="POST">
+      <input type="hidden" name="meetup_id" value="<%= @selected_meetup.id %>"/>
+      <input type="submit" value="Join Meetup"/>
+    </form>
+  </div>
+</div>
+<div class="row">
+  <div class="small-5 columns">
+    <h4><%= @selected_meetup.users.length %> members joined</h4>
+  </div>
+</div>
+<div class="row">
+  <div class="small-3 columns">
+    <ul>
+      <% @selected_meetup.users.each do |member| %>
+        <li><img src="<%= member.avatar_url %>"> <%= member.username %></li>
+          <% end %>
+    </ul>
   </div>
 </div>

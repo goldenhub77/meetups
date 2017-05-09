@@ -10,8 +10,19 @@ h1, h5, h4, p, span, a, a:visited,
 .meetup-block a:hover,
 .top-bar-section,
 label,
-.flash {
+.flash,
+ul li {
   color: #FFF;
+}
+
+ul li {
+  list-style: none;
+  font-size: 1.5rem;
+}
+
+ul li img {
+  width: 1.75rem;
+  height: 1.75rem;
 }
 
 h1 {
@@ -21,10 +32,11 @@ h1 {
   text-align: center;
 }
 
-a, a:visited {
+a, a:visited, a:hover {
 
   line-height: 0;
   text-decoration: none;
+  color: #FFF;
 }
 
 p {
@@ -133,9 +145,17 @@ div.columns {
   height: 50px;
   font-size: 1.75rem;
   text-align: center;
-  position: absolute;
+  position: relative;
   top: inherit;
   background-color: #3B9089;
+}
+
+.flash a {
+  position: absolute;
+  right: 10px;
+  top: 22px;
+  height: auto;
+  width: auto;
 }
 
 label {

@@ -8,7 +8,7 @@ $('#date-time-form .time').timepicker({
     });
 
 $('#date-time-form .date').datepicker({
-        'format': 'yyyy-m-d',
+        'format': 'm/d/yyyy',
         'autoclose': true,
         'startDate': today,
         'disableTextInput': true
@@ -49,22 +49,30 @@ $('document').ready(() => {
   let signOut = $(".top-bar-section li a[href='/sign_out']");
   let signIn = $(".top-bar-section li a[href='/auth/github']");
   let flash = $(".flash");
+  let flashClose = $(".flash a");
 
-  if (signIn.length === 1) {
-    if (flash.length === 1) {
-      flash.delay(2000).fadeOut();
-    }
-  }else if (signOut.length === 1) {
-    if (flash.length === 1) {
-      flash.delay(3000).fadeOut();
-      signOut.click((event) => {
-        event.preventDefault();
+  flashClose.on('click', (event) => {
+    event.preventDefault();
+    flash.fadeOut();
+  });
 
-        flash.delay(3000).fadeOut(() => {
+  if (document.location === '/meetups') {
+    if (signIn.length === 1) {
+      if (flash.length === 1) {
+        flash.delay(2000).fadeOut();
+      }
+    }else if (signOut.length === 1) {
+      if (flash.length === 1) {
+        flash.delay(3000).fadeOut();
+        signOut.click((event) => {
+          event.preventDefault();
 
-          document.location.href = '/sign_out';
+          flash.delay(3000).fadeOut(() => {
+
+            document.location.href = '/sign_out';
+          });
         });
-      });
+      }
     }
   }
 });

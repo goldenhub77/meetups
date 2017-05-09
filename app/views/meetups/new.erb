@@ -1,6 +1,6 @@
 <h1>Start a new Meetup</h1>
 
-<form action="/meetup/create" method="POST">
+<form data-abide novalidate action="/meetup/create" method="POST">
   <!-- <div data-abide-error class="alert callout" style="display: none;">
     <p><i class="fi-alert"></i> There are errors on the form!</p>
   </div> -->
@@ -24,26 +24,28 @@
     <div class="small-3 columns">
       <p id="date-time-form">
         <label>Starts at?
-          <input type="date" class="date start" value="<%= session[:start_date] %>" min="<%= @start_min_date %>" name="start_date" placeholder="Start Date" required/>
+          <!-- pattern="^(([1-9])|0[1-9]|1[0-2])\/(0[1-9]|[1-2][0-9]|3[0-1])\/[0-9]{4}$" -->
+          <input type="text" class="date start" value="<%= session[:start_date] %>" min="<%= @start_min_date %>" name="start_date" placeholder="Start Date" required/>
           <span class="form-error">
-            Start Date required!
+            Format: m/d/yyyy
           </span>
         </label>
         <label>
-          <input type="time" class="time start" value="<%= session[:start_time] %>" name="start_time" placeholder="Start Time" required/>
+          <!-- pattern="^((0?[1-9]{1})|(1{1}[0-2]{1}))((:[0-5][0-9])?)(am|pm|AM|PM)$" -->
+          <input type="text" class="time start" value="<%= session[:start_time] %>" name="start_time" placeholder="Start Time" required/>
           <span class="form-error">
-            Start Time required!
+            Format: h:m(am or pm)
           </span>
         </label>
         <label>Ends at?
-          <input type="date" class="date end" value="<%= session[:end_date] %>" min="<%= @start_min_date %>" name="end_date" placeholder="End Date" required/>
+          <input type="text" class="date end" value="<%= session[:end_date] %>" min="<%= @start_min_date %>" name="end_date" placeholder="End Date" required/>
           <span class="form-error">
-            End Date required!
+            Format: m/d/yyyy
           </span>
         </label>
-        <input type="time" class="time end" value="<%= session[:end_time] %>" name="end_time" placeholder="End Time" required/>
+        <input type="text" class="time end" value="<%= session[:end_time] %>" name="end_time" placeholder="End Time" required/>
         <span class="form-error">
-          End Time required!
+          Format: h:m(am or pm)
         </span>
       </p>
     </div>

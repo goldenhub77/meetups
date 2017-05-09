@@ -18,12 +18,12 @@ feature "User visits meetup details" do
 
   scenario "No user signed in clicks on a meetup" do
     click_on("Helicopter Ride30")
-    expect(page).to have_content("Meetups in Space Sign In Please sign in, no user logged in.")
+    expect(page).to have_content("Sign In Helicopter Ride30 take a ride above the city NYC Begins: Sat Feb 2, 2002 at 12:00PM Ends: Sat Feb 2, 2002 at 1:00PM Started by: john_smith88 0 members joined")
   end
 
   scenario "User logged in clicks on a meetup" do
     sign_in_as user
     click_on("Helicopter Ride30")
-    expect(page).to have_content("Sign Out Helicopter Ride30 take a ride above the city NYC Begins: Sat Feb 2, 2002 at 12:00PM Ends: Sat Feb 2, 2002 at 1:00PM Started by: john_smith88 Members Joined: 0")
+    expect(page).to have_content("Sign Out Helicopter Ride30 take a ride above the city NYC Begins: Sat Feb 2, 2002 at 12:00PM Ends: Sat Feb 2, 2002 at 1:00PM Started by: john_smith88 0 members joined")
   end
 end
